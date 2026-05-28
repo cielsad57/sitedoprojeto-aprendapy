@@ -85,7 +85,9 @@
       
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
         <a href="#sobre" class="hover:text-white transition-colors">O que é</a>
+        <a href="#demo" class="hover:text-white transition-colors">Testar Demo</a>
         <a href="#recursos" class="hover:text-white transition-colors">Recursos</a>
+        <a href="#faq" class="hover:text-white transition-colors">Dúvidas</a>
         <a href="#contato" class="hover:text-white transition-colors">Contato</a>
         <a href="#download" class="glass px-4 py-2 rounded-xl hover:bg-white/5 transition-all text-xs font-semibold tracking-wide uppercase">Baixar APP</a>
       </nav>
@@ -97,7 +99,9 @@
 
     <div id="mobile-menu" class="hidden md:hidden glass border-t-0 mx-6 rounded-b-2xl p-6 space-y-4 absolute left-0 right-0 top-20 z-40">
       <a href="#sobre" class="block text-gray-300 hover:text-white py-1">O que é</a>
+      <a href="#demo" class="block text-gray-300 hover:text-white py-1">Testar Demo</a>
       <a href="#recursos" class="block text-gray-300 hover:text-white py-1">Recursos</a>
+      <a href="#faq" class="block text-gray-300 hover:text-white py-1">Dúvidas</a>
       <a href="#contato" class="block text-gray-300 hover:text-white py-1">Contato</a>
       <a href="#download" class="block text-center bg-white/10 text-white py-2.5 rounded-xl font-medium">Baixar APP</a>
     </div>
@@ -169,6 +173,73 @@
       </div>
     </section>
 
+    <section id="demo" class="px-6 py-20 bg-gradient-to-b from-transparent to-[#090d1a]/50 border-b border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight">
+            Experimente <span class="gradient-text">no Navegador</span>
+          </h2>
+          <p class="text-gray-400 mt-4 text-base md:text-lg">
+            Escreva ou selecione um código Python abaixo e clique em Executar para ver o resultado na hora!
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+          <!-- Exemplos Rápidos -->
+          <div class="lg:col-span-3 flex flex-col gap-3">
+            <span class="text-xs uppercase font-bold tracking-wider text-gray-500 mb-2">Exemplos Práticos:</span>
+            <button onclick="loadCode('ola')" class="text-left glass p-4 rounded-2xl hover:bg-white/10 transition-all border-l-4 border-green-400 font-medium text-sm text-gray-200">
+              👋 Olá Mundo!
+              <span class="block text-xs text-gray-500 mt-1">O primeiro passo de todo dev</span>
+            </button>
+            <button onclick="loadCode('xp')" class="text-left glass p-4 rounded-2xl hover:bg-white/10 transition-all border-l-4 border-cyan-400 font-medium text-sm text-gray-200">
+              🏆 Sistema de XP
+              <span class="block text-xs text-gray-500 mt-1">Variáveis e condicionais</span>
+            </button>
+            <button onclick="loadCode('loop')" class="text-left glass p-4 rounded-2xl hover:bg-white/10 transition-all border-l-4 border-purple-400 font-medium text-sm text-gray-200">
+              🔁 Loop de XP
+              <span class="block text-xs text-gray-500 mt-1">Repetição e contagem</span>
+            </button>
+          </div>
+
+          <!-- Editor e Terminal -->
+          <div class="lg:col-span-9 grid md:grid-cols-2 gap-6 glass rounded-3xl p-6 border border-white/10 glow">
+            <!-- Coluna Editor -->
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold tracking-wider text-gray-400 uppercase flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                  editor.py
+                </span>
+                <span class="text-xs text-gray-500">Python 3.x</span>
+              </div>
+              <div class="relative flex-1 min-h-[220px] bg-[#03050c] rounded-2xl border border-white/5 p-4 font-mono text-sm">
+                <textarea id="code-editor" class="w-full h-full bg-transparent text-gray-100 border-none outline-none resize-none focus:ring-0 leading-relaxed" spellcheck="false">print("👋 Olá, Mundo!")
+print("Bem-vindo ao AprendaPy!")</textarea>
+              </div>
+              <button onclick="executeDemoCode()" class="w-full bg-gradient-to-r from-green-400 to-cyan-400 text-black font-bold py-3.5 rounded-2xl hover:scale-[1.02] active:scale-100 transition-all duration-300 flex items-center justify-center gap-2 glow">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                Executar Código
+              </button>
+            </div>
+
+            <!-- Coluna Console -->
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold tracking-wider text-gray-400 uppercase">Console de Saída</span>
+                <button onclick="clearConsole()" class="text-xs text-gray-500 hover:text-white transition-colors">Limpar</button>
+              </div>
+              <div id="console-output" class="flex-1 min-h-[220px] bg-black/80 rounded-2xl border border-white/5 p-4 font-mono text-xs text-green-400 overflow-y-auto space-y-1">
+                <div># Clique em "Executar Código" para ver a saída aqui...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="recursos" class="px-6 py-24">
       <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -232,6 +303,73 @@
       </div>
     </section>
 
+    <section id="faq" class="px-6 py-24 bg-gradient-to-b from-[#090d1a]/50 to-transparent border-t border-white/5">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight">
+            Perguntas <span class="gradient-text">Frequentes</span>
+          </h2>
+          <p class="text-gray-400 mt-4 text-base md:text-lg">
+            Tem alguma dúvida sobre o AprendaPy? Veja se sua resposta está aqui.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Item 1 -->
+          <div class="glass rounded-2xl border border-white/5 overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full text-left p-6 flex justify-between items-center text-white hover:bg-white/[0.02] transition-colors focus:outline-none">
+              <span class="font-bold text-lg">O AprendaPy é gratuito?</span>
+              <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                Sim! O aplicativo é 100% gratuito para baixar e usar. Você pode aprender Python, subir de nível e praticar sem gastar nada.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="glass rounded-2xl border border-white/5 overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full text-left p-6 flex justify-between items-center text-white hover:bg-white/[0.02] transition-colors focus:outline-none">
+              <span class="font-bold text-lg">Preciso de conhecimento prévio em programação?</span>
+              <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                Não! O curso foi desenhado do absoluto zero. Explicamos cada conceito detalhadamente com desafios interativos, perfeito para quem nunca escreveu código na vida.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="glass rounded-2xl border border-white/5 overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full text-left p-6 flex justify-between items-center text-white hover:bg-white/[0.02] transition-colors focus:outline-none">
+              <span class="font-bold text-lg">Como funciona o console de código integrado no app?</span>
+              <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                O aplicativo conta com um terminal interativo onde você pode digitar comandos reais em Python (como declarar variáveis, loops e condições) e ver a execução instantânea diretamente na tela do seu celular.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="glass rounded-2xl border border-white/5 overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full text-left p-6 flex justify-between items-center text-white hover:bg-white/[0.02] transition-colors focus:outline-none">
+              <span class="font-bold text-lg">Tem suporte para iOS (iPhone)?</span>
+              <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                No momento, o aplicativo está disponível como arquivo APK de instalação direta para Android. O suporte nativo para iOS está planejado e faz parte do nosso roadmap de desenvolvimento futuro.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contato" class="px-6 py-20 bg-black/20 border-t border-white/5">
       <div class="max-w-5xl mx-auto">
         <div class="text-center max-w-2xl mx-auto mb-12">
@@ -239,7 +377,7 @@
             Fale com o <span class="gradient-text">Desenvolvedor</span>
           </h2>
           <p class="text-gray-400 mt-4 text-base md:text-lg">
-            Dúvidas sobre o app, parcerias ou feedback? Entre em contato diretamente com o Ciel.
+            Dúvidas sobre o app, parcerias ou feedback? Entre em contato diretamente com o Marciel.
           </p>
         </div>
 
@@ -247,10 +385,10 @@
           <div class="glass rounded-3xl p-8 border border-white/10 glow">
             <div class="flex items-center gap-4 mb-8 border-b border-white/5 pb-6">
               <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center font-bold text-3xl text-cyan-400 border border-cyan-400/20">
-                C
+                M
               </div>
               <div>
-                <h4 class="text-xl font-bold text-white">Ciel Silva</h4>
+                <h4 class="text-xl font-bold text-white">Marciel Leal</h4>
                 <p class="text-sm text-gray-500">Criador do AprendaPy</p>
               </div>
             </div>
@@ -347,6 +485,158 @@
     }
 
     setInterval(rotateScreens, 4000);
+
+    // FAQ Accordion Logic
+    function toggleFaq(btn) {
+      const container = btn.parentElement;
+      const answer = container.querySelector('.faq-answer');
+      const svg = btn.querySelector('svg');
+      
+      if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+        answer.style.maxHeight = '0px';
+        svg.classList.remove('rotate-180');
+      } else {
+        // Fechar outros FAQs abertos
+        document.querySelectorAll('.faq-answer').forEach(el => {
+          el.style.maxHeight = '0px';
+          el.parentElement.querySelector('svg').classList.remove('rotate-180');
+        });
+        
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        svg.classList.add('rotate-180');
+      }
+    }
+
+    // Python Terminal Demo Logic
+    const codeTemplates = {
+      ola: `print("👋 Olá, Mundo!")\nprint("Bem-vindo ao AprendaPy!")`,
+      xp: `xp = 120\n\nif xp >= 100:\n    print("🏆 Parabéns! Você subiu de Liga!")\nelse:\n    print("Suba de nível para evoluir!")`,
+      loop: `print("Iniciando contagem de XP...")\n\nfor i in range(3):\n    print(f"Desafio {i+1} completo! +10 XP")\n\nprint("Sessão finalizada!")`
+    };
+
+    function loadCode(templateKey) {
+      const editor = document.getElementById('code-editor');
+      editor.value = codeTemplates[templateKey];
+      clearConsole();
+    }
+
+    function clearConsole() {
+      const consoleOutput = document.getElementById('console-output');
+      consoleOutput.innerHTML = '<div><span class="text-gray-600">&gt;&gt;&gt; console cleared</span></div>';
+    }
+
+    function executeDemoCode() {
+      const code = document.getElementById('code-editor').value;
+      const consoleOutput = document.getElementById('console-output');
+      consoleOutput.innerHTML = '';
+      
+      consoleOutput.innerHTML += '<div><span class="text-gray-500">$ python editor.py</span></div>';
+      
+      const lines = code.split('\n');
+      let variables = {};
+      let currentOutput = '';
+      
+      try {
+        for (let i = 0; i < lines.length; i++) {
+          let line = lines[i].trim();
+          if (!line) continue;
+          
+          if (line.startsWith('#')) continue;
+          
+          if (line.startsWith('print(')) {
+            let content = line.substring(6, line.length - 1).trim();
+            
+            if (content.startsWith('f"') || content.startsWith("f'")) {
+              let innerStr = content.substring(2, content.length - 1);
+              innerStr = innerStr.replace(/\{([^}]+)\}/g, (match, p1) => {
+                const val = variables[p1.trim()];
+                return val !== undefined ? val : match;
+              });
+              currentOutput += `<div>${innerStr}</div>`;
+            } 
+            else if ((content.startsWith('"') && content.endsWith('"')) || (content.startsWith("'") && content.endsWith("'"))) {
+              currentOutput += `<div>${content.substring(1, content.length - 1)}</div>`;
+            } 
+            else {
+              if (variables[content] !== undefined) {
+                currentOutput += `<div>${variables[content]}</div>`;
+              } else {
+                try {
+                  let evalExpr = content;
+                  for (let k in variables) {
+                    evalExpr = evalExpr.replace(new RegExp('\\b' + k + '\\b', 'g'), variables[k]);
+                  }
+                  const res = eval(evalExpr);
+                  currentOutput += `<div>${res}</div>`;
+                } catch (err) {
+                  currentOutput += `<div class="text-red-400">NameError: name '${content}' is not defined</div>`;
+                }
+              }
+            }
+          }
+          else if (line.includes('=')) {
+            let parts = line.split('=');
+            if (parts.length === 2) {
+              let varName = parts[0].trim();
+              let varVal = parts[1].trim();
+              try {
+                variables[varName] = eval(varVal);
+              } catch(e) {
+                variables[varName] = varVal.replace(/['"]/g, '');
+              }
+            }
+          }
+          else if (line.startsWith('if xp >= 100:')) {
+            let hasXp = variables['xp'] >= 100;
+            let nextLine = lines[i+1] ? lines[i+1].trim() : '';
+            if (nextLine.startsWith('print(')) {
+              if (hasXp) {
+                let innerText = nextLine.substring(6, nextLine.length - 1).replace(/['"]/g, '');
+                currentOutput += `<div>${innerText}</div>`;
+              }
+              i++;
+            }
+            if (lines[i+1] && lines[i+1].trim().startsWith('else:')) {
+              i++;
+              if (lines[i+1] && lines[i+1].trim().startsWith('print(')) {
+                if (!hasXp) {
+                  let innerText = lines[i+1].trim().substring(6, lines[i+1].trim().length - 1).replace(/['"]/g, '');
+                  currentOutput += `<div>${innerText}</div>`;
+                }
+                i++;
+              }
+            }
+          }
+          else if (line.startsWith('for i in range(3):')) {
+            let nextLine = lines[i+1] ? lines[i+1].trim() : '';
+            if (nextLine.startsWith('print(')) {
+              for (let j = 0; j < 3; j++) {
+                let content = nextLine.substring(6, nextLine.length - 1).trim();
+                if (content.startsWith('f"') || content.startsWith("f'")) {
+                  let innerStr = content.substring(2, content.length - 1);
+                  innerStr = innerStr.replace('{i+1}', j + 1).replace('{i}', j);
+                  currentOutput += `<div>${innerStr}</div>`;
+                } else {
+                  currentOutput += `<div>${content.replace(/['"]/g, '')}</div>`;
+                }
+              }
+              i++;
+            }
+          }
+          else {
+            currentOutput += `<div class="text-gray-500"># Linha executada: ${line}</div>`;
+          }
+        }
+      } catch(e) {
+        currentOutput += `<div class="text-red-400">SyntaxError: Entrada de código inválida</div>`;
+      }
+      
+      if (!currentOutput.includes('div')) {
+        currentOutput += '<div>Processo finalizado sem saídas.</div>';
+      }
+      
+      consoleOutput.innerHTML += currentOutput;
+    }
   </script>
 </body>
 </html>
